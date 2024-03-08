@@ -17,15 +17,18 @@ import { FormEvent, useState } from "react";
 const AddToModal = () => {
   const [task, setTask] = useState("");
   const [description, setDescription] = useState("");
-const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch();
+
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
-    const taskDetails ={
-      title :task,
-      description:description,
-    }
+    const randomString = Math.random().toString(36).substring(2, 7);
+    const taskDetails = {
+      id: randomString,
+      title: task,
+      description: description,
+    };
 
-    dispatch(addTodo(taskDetails))
+    dispatch(addTodo(taskDetails));
   };
   return (
     <div>
