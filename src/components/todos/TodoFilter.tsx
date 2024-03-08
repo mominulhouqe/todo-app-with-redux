@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Button } from "../ui/button";
 import {
   DropdownMenu,
@@ -10,16 +11,17 @@ import {
 } from "../ui/dropdown-menu";
 
 const TodoFilter = () => {
+  const [position, setPosition] = useState("bottom")
   return (
     <div>
-      <DropdownMenu>
+      <DropdownMenu >
         <DropdownMenuTrigger asChild>
           <Button variant="outline">Filter</Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent className="w-56">
-          <DropdownMenuLabel>Panel Position</DropdownMenuLabel>
+        <DropdownMenuContent className="w-56 ">
+          <DropdownMenuLabel>Filter priority</DropdownMenuLabel>
           <DropdownMenuSeparator />
-          <DropdownMenuRadioGroup>
+          <DropdownMenuRadioGroup value={position} onValueChange={setPosition} >
             <DropdownMenuRadioItem value="High">High</DropdownMenuRadioItem>
             <DropdownMenuRadioItem value="Medium">Medium</DropdownMenuRadioItem>
             <DropdownMenuRadioItem value="Low">Low</DropdownMenuRadioItem>
